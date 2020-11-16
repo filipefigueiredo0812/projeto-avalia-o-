@@ -8,6 +8,7 @@
     </head>
     <body>
         <h1 style="color:red; text-align:center;">@yield('header')</h1>
+        <div>
         @yield('conteudo')
         <div class="navbar">
             
@@ -19,7 +20,7 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="{{route('musicos.index')}}">Musicos <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{route('musicos.index')}}">Musicos</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('albuns.index')}}">Albuns</a>
@@ -34,6 +35,7 @@
 </nav>
             
         </div>
+            </div>
         <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
         <script src="{{asset('js/bootstrap.js')}}"></script>
         <script src="{{asset('js/fa.js')}}"></script>

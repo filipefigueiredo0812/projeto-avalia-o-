@@ -9,19 +9,30 @@ class MusicasController extends Controller
 {
     //
     public function index(){
-        $editoras = Editora::paginate(4);
-        return view ('editoras.index', [
-            'editoras'=>$editoras
+        $musicas = Musica::paginate(4);
+        return view ('musicas.index', [
+            'musicas'=>$musicas
         ]);
     }
     
     public function show(Request $r){
-        $idEditora = $r->id;
-        $editora = Editora::where('id_editora',$idEditora)->with('livros')->first();
+        $idMusica = $r->id;
+        $musica = Musica::where('id_musica',$idMusica)->with(['generos', 'albuns', 'musicos'])->first();
         
         
-        return view ('editoras.show', [
-            'editora'=>$editora
+        return view ('musicas.show', [
+            'musica'=>$musica
+        ]);
+    }
+    
+    
+    
+    public function pesquisar (Request $r) {
+        $nome = $r->nome;
+        $musicas= Musica::where('titulo', 'like', '%' . $nome . '%')->get();
+        
+        return view('musicas.resultado', [
+            'musicas'=>$musicas
         ]);
     }
 }

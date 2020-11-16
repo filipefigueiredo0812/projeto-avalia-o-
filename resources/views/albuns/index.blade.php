@@ -8,7 +8,7 @@ Albuns
 @section('conteudo')
 
 <div style="text-align:center">
-<form method="post" action="{{route('musicos.form')}}">
+<form method="post" action="{{route('albuns.form')}}">
         @csrf
         <label for="nome">Pesquisa:</label>
         <input type="text" name="nome">

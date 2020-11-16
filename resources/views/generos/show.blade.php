@@ -1,36 +1,38 @@
 @extends('layout')
 @section('titulo')
-Musicos
+Generos
 @endsection
 @section('header')
-Musicos
+Generos
 @endsection
 @section('conteudo')
-ID: {{$musico->id_musico}}<br>
-Nome: {{$musico->nome}}<br>
-Nacionalidade: {{$musico->nacionalidade}}<br>
-Data de Nascimento: {{$musico->data_nascimento}}<br>
+ID: {{$genero->id_genero}}<br>
+Designação: {{$genero->designacao}}<br>
+Observação: {{$genero->observacoes}}<br>
 
-Fotografia: {{$musico->fotografia}}<br>
-
+<br>
 
 
-
-
-@if(count($musico->musicas)>0)
-Músicas:{{$musico->musicas->titulo}}<br>
+@if(count($genero->musicas)>0)
+Músicas:<br>
+@foreach($genero->musicas as $musica)
+{{$musica->titulo}}<br>
+@endforeach
 @else
 <div class="alert alert-danger" role="alert">
-<b>Ainda não lançou nenhuma música</b>
+<b>Não tem nenhuma música deste género</b>
 </div>
 @endif
 
 
+<br>
 
 
-
-@if(count($musico->albuns)>0)
-Músicas:{{$musico->albuns->titulo}}<br>
+@if(count($genero->albuns)>0)
+Álbuns:<br>
+@foreach($genero->albuns as $album)
+{{$album->titulo}}<br>
+@endforeach
 @else
 <div class="alert alert-danger" role="alert">
 <b>Ainda não lançou nenhum album.</b>

@@ -1,30 +1,18 @@
 @extends('layout')
 @section('titulo')
-Musicos
+Generos
 @endsection
 @section('header')
-Musicos
+Generos
 @endsection
 @section('conteudo')
 
-<div style="text-align:center">
-<form method="post" action="{{route('musicos.form')}}">
-        @csrf
-        <label for="nome">Pesquisa:</label>
-        <input type="text" name="nome">
-        <button type="submit">Enviar</button>
-</form>
-</div>
-
-
-
-
 
 <ul>
-@foreach ($musicos as $musico)
+@foreach ($generos as $genero)
 
-<a href="{{route('musicos.show',['id'=>$musico->id_musico])}}">
-<li>{{$musico->nome}}
+<a href="{{route('generos.show',['id'=>$genero->id_genero])}}">
+<li>{{$genero->designacao}}
     
 </li>
 </a>
@@ -32,7 +20,7 @@ Musicos
 </ul>
 
 
-{{$musicos->render()}}
+{{$generos->render()}}
 @endsection
 
 

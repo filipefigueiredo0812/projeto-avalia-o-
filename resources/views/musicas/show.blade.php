@@ -1,39 +1,45 @@
 @extends('layout')
 @section('titulo')
-Musicos
+Musicas
 @endsection
 @section('header')
-Musicos
+Musicas
 @endsection
 @section('conteudo')
-ID: {{$musico->id_musico}}<br>
-Nome: {{$musico->nome}}<br>
-Nacionalidade: {{$musico->nacionalidade}}<br>
-Data de Nascimento: {{$musico->data_nascimento}}<br>
+ID: {{$musica->id_musica}}<br>
+Título: {{$musica->titulo}}<br>
 
-Fotografia: {{$musico->fotografia}}<br>
+<br>
 
-
-
-
-
-@if(count($musico->musicas)>0)
-Músicas:{{$musico->musicas->titulo}}<br>
+@if(isset($musica->musicos))
+Musicos:<br>
+{{$musica->musicos->nome}}<br>
+<br>
 @else
 <div class="alert alert-danger" role="alert">
-<b>Ainda não lançou nenhuma música</b>
+<b>Não tem musico definido.</b>
 </div>
 @endif
 
 
-
-
-
-@if(count($musico->albuns)>0)
-Músicas:{{$musico->albuns->titulo}}<br>
+@if(isset($musica->albuns))
+Albúns:<br>
+{{$musica->albuns->titulo}}<br>
+<br>
 @else
 <div class="alert alert-danger" role="alert">
-<b>Ainda não lançou nenhum album.</b>
+<b>Não pertence a nenhum albúm.</b>
+</div>
+@endif
+
+
+@if(isset($musica->generos))
+Género:
+{{$musica->generos->designacao}}<br>
+
+@else
+<div class="alert alert-danger" role="alert">
+<b>A música ainda não tem género definido.</b>
 </div>
 @endif
 

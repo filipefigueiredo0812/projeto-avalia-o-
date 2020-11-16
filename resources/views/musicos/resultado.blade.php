@@ -8,7 +8,7 @@ Resultados
 @section('conteudo')
 
 
-@foreach($musicos as $musicos)
+@foreach($musicos as $musico)
 <a href="{{route('musicos.show',['id'=>$musico->id_musico])}}">
 {{$musico->nome}}<br>
 </a>

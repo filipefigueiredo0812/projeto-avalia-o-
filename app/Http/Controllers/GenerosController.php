@@ -18,7 +18,7 @@ class GenerosController extends Controller
         
         $idGenero = $r->id;
         
-        $genero = Genero::where('id_genero',$idGenero)->with('livros')->first();
+        $genero = Genero::where('id_genero',$idGenero)->with(['musicas', 'albuns'])->first();
         
         
         return view ('generos.show', [
@@ -26,4 +26,6 @@ class GenerosController extends Controller
         ]);
         
     }
+    
+    
 }

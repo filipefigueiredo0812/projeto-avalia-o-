@@ -1,6 +1,6 @@
 @extends('layout')
 @section('titulo')
-Musicos
+Musicas
 @endsection
 @section('header')
 Resultados
@@ -8,9 +8,9 @@ Resultados
 @section('conteudo')
 
 
-@foreach($musicos as $musicos)
-<a href="{{route('musicos.show',['id'=>$musico->id_musico])}}">
-{{$musico->nome}}<br>
+@foreach($musicas as $musica)
+<a href="{{route('musicas.show',['id'=>$musica->id_musica])}}">
+{{$musica->titulo}}<br>
 </a>
 @endforeach
 

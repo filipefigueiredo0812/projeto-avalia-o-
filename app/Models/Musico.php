@@ -9,7 +9,7 @@ class Musico extends Model
 {
     use HasFactory;
     
-    protected $primaryKey = "id_editora";
+    protected $primaryKey = "id_musico";
     protected $table = "musicos";
     
     public function albuns(){

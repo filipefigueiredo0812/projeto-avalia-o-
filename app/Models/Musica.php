@@ -22,7 +22,7 @@ class Musica extends Model
         return $this->belongsTo('App\Models\Musico', 'id_musico');
     }
     
-    public function genero(){
+    public function generos(){
         return $this->belongsTo('App\Models\Genero', 'id_genero');
     }
 }

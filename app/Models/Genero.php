@@ -18,6 +18,6 @@ class Genero extends Model
     }
     
     public function albuns(){
-        return $this->hasMany('App\Models\Album', 'id_album');
+        return $this->hasMany('App\Models\Album', 'id_genero');
     }
 }

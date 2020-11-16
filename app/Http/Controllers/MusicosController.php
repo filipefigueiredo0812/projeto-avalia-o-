@@ -22,7 +22,6 @@ class MusicosController extends Controller
         
         $musico = Musico::where('id_musico',$idMusico)->with(['albuns', 'musicas'])->first();
         
-        
         return view ('musicos.show', [
             'musico'=>$musico
         ]);

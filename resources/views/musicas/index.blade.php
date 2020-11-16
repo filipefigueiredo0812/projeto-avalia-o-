@@ -1,14 +1,14 @@
 @extends('layout')
 @section('titulo')
-Musicos
+Musicas
 @endsection
 @section('header')
-Musicos
+Musicas
 @endsection
 @section('conteudo')
 
 <div style="text-align:center">
-<form method="post" action="{{route('musicos.form')}}">
+<form method="post" action="{{route('musicas.form')}}">
         @csrf
         <label for="nome">Pesquisa:</label>
         <input type="text" name="nome">
@@ -21,10 +21,10 @@ Musicos
 
 
 <ul>
-@foreach ($musicos as $musico)
+@foreach ($musicas as $musica)
 
-<a href="{{route('musicos.show',['id'=>$musico->id_musico])}}">
-<li>{{$musico->nome}}
+<a href="{{route('musicas.show',['id'=>$musica->id_musica])}}">
+<li>{{$musica->titulo}}
     
 </li>
 </a>
@@ -32,7 +32,7 @@ Musicos
 </ul>
 
 
-{{$musicos->render()}}
+{{$musicas->render()}}
 @endsection
 
 

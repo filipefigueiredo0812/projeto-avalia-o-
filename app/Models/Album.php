@@ -20,6 +20,10 @@ class Album extends Model
     }
     
     public function generos(){
-        return $this->hasMany('App\Models\Genero', 'id_genero');
+        return $this->belongsTo('App\Models\Genero', 'id_genero');
+    }
+    
+    public function musicos(){
+        return $this->belongsTo('App\Models\Musico', 'id_musico');
     }
 }
