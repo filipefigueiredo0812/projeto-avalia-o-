@@ -12,45 +12,46 @@
             html, body {
             height: 100%;
             margin: 0;
-        }
+            }
             body{
-               background: #536976;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #292E49, #536976);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #292E49, #536976); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: #536976;  
+            background: -webkit-linear-gradient(to right, #292E49, #536976); 
+            background: linear-gradient(to right, #292E49, #536976);
 
- background-repeat: no-repeat; height:100%"
+            background-repeat: no-repeat; height:100%;
             }
             
             a:link {
-  color: black;
-  background-color: transparent;
-  text-decoration: none;
-}
+            color: black;
+            background-color: transparent;
+            text-decoration: none;
+            }
 
-a:visited {
-  color: black;
-  background-color: transparent;
-  text-decoration: none;
-}
+            a:visited {
+            color: black;
+            background-color: transparent;
+            text-decoration: none;
+            }
 
-a:hover {
-  color: black;
-  background-color: transparent;
-  text-decoration: underline;
-}
+            a:hover {
+            color: black;
+            background-color: transparent;
+            text-decoration: underline;
+            }
 
-a:active {
-  color: black;
-  background-color: transparent;
-  text-decoration: underline;
-}
+            a:active {
+            color: black;
+            background-color: transparent;
+            text-decoration: underline;
+            }
             
             img{
-                display:block;
-  margin-left: auto;
-  margin-right: auto;
-                margin-top:115px;
-  width: 65%;         }
+            display:block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top:115px;
+            width: 65%;         
+            }
         </style>
         
         
