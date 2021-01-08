@@ -13,6 +13,11 @@ class Genero extends Model
     protected $primaryKey = "id_genero";
     protected $table = "generos";
     
+    protected $fillable = [
+        'designacao',
+        'observacoes'
+    ];
+
     public function musicas(){
         return $this->hasMany('App\Models\Musica', 'id_genero');
     }

@@ -13,7 +13,13 @@ class Album extends Model
     protected $primaryKey = "id_album";
     protected $table = "albuns";
     
-    
+    protected $fillable = [
+        'titulo',
+        'id_genero',
+        'id_musico',
+        'data_lancamento',
+        'observacoes'
+    ];
     
     public function musicas(){
         return $this->hasMany('App\Models\Musica', 'id_album');

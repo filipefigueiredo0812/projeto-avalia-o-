@@ -63,3 +63,27 @@ Route::post('/musicas/pesquisa', 'App\Http\Controllers\MusicasController@pesquis
 
 Route::post('/musicos/pesquisa', 'App\Http\Controllers\MusicosController@pesquisar')
     ->name('musicos.form');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+Route::get('/users','App\Http\Controllers\UsersController@index')
+    ->name('users.index');
+
+
+Route::get('/musicas/create','App\Http\Controllers\MusicasController@create')
+    ->name('musicas.create')->middleware('auth');
+Route::post('/musicas/store','App\Http\Controllers\MusicasController@store')
+    ->name('musicas.store')->middleware('auth');
+Route::get('/musicas/{id}/edit','App\Http\Controllers\MusicasController@edit')
+    ->name('musicas.edit')->middleware('auth');
+Route::patch('/musicas/{id}','App\Http\Controllers\MusicasController@update')
+    ->name('musicas.update')->middleware('auth');
+
+
+Route::get('/musicas/{id}/delete','App\Http\Controllers\MusicasController@delete')
+    ->name('musicas.delete')->middleware('auth');
+Route::delete('/musicas','App\Http\Controllers\MusicasController@destroy')
+    ->name('musicas.destroy')->middleware('auth');

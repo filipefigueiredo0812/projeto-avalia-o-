@@ -30,9 +30,14 @@ Musicas
 </a>
 @endforeach
 </ul>
-
-
 {{$musicas->render()}}
+
+@if(auth()->check())
+@if(Gate::allows('admin'))
+<a href="{{route('musicas.create')}}" class="btn btn-info" role="button">Nova Música</a>
+@endif
+@endif
+
 @endsection
 
 

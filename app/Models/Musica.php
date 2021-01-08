@@ -14,6 +14,14 @@ class Musica extends Model
     
     protected $table = "musicas";
     
+    protected $fillable = [
+        'titulo',
+        'id_musico',
+        'id_genero',
+        'id_album'
+    ];
+
+
     public function albuns(){
         return $this->belongsTo('App\Models\Album', 'id_album');
     }
@@ -24,5 +32,9 @@ class Musica extends Model
     
     public function generos(){
         return $this->belongsTo('App\Models\Genero', 'id_genero');
+    }
+
+    public function users(){
+        return $this->belongsTo('App\Models\Users','id_user');
     }
 }

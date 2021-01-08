@@ -12,6 +12,13 @@ class Musico extends Model
     protected $primaryKey = "id_musico";
     protected $table = "musicos";
     
+    protected $fillable = [
+        'nome', 
+        'nacionalidade',
+        'data_nascimento',
+        'fotografia'
+    ];
+
     public function albuns(){
         return $this->hasMany('App\Models\Album', 'id_musico');
     }
