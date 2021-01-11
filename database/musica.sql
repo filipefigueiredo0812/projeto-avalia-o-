@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 08-Jan-2021 às 18:23
+-- Generation Time: 11-Jan-2021 às 18:27
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -72,18 +72,6 @@ INSERT INTO `generos` (`id_genero`, `designacao`, `observacoes`, `created_at`, `
 (1, 'Rap', NULL, NULL, NULL),
 (2, 'Pop', NULL, NULL, NULL),
 (3, 'Lo-Fi', NULL, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `migrations`
---
-
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -167,7 +155,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `tipo_user`, `remember_token`, `created_at`, `updated_at`, `id_user`) VALUES
-(1, 'Filipe', 'filipe1234@gmail.com', NULL, '$2y$10$mCN.2EYZJi97YalH1RZ/C.lMrkuRzEXdTWjsQQgInrJwkjEOOApd2', 'admin', NULL, '2021-01-08 17:10:03', '2021-01-08 17:10:03', NULL);
+(1, 'Filipe', 'filipe1234@gmail.com', NULL, '$2y$10$mCN.2EYZJi97YalH1RZ/C.lMrkuRzEXdTWjsQQgInrJwkjEOOApd2', 'admin', NULL, '2021-01-08 17:10:03', '2021-01-08 17:10:03', NULL),
+(2, 'Alberto', 'alberto1234@gmail.com', NULL, '$2y$10$6CLarNQmKt0LfRb.5qAgweJarV6WrAgqbsu0305C4ro8PfhufetCa', 'normal', NULL, '2021-01-11 17:27:37', '2021-01-11 17:27:37', NULL);
 
 --
 -- Indexes for dumped tables
@@ -184,12 +173,6 @@ ALTER TABLE `albuns`
 --
 ALTER TABLE `generos`
   ADD PRIMARY KEY (`id_genero`);
-
---
--- Indexes for table `migrations`
---
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `musicas`
@@ -226,12 +209,6 @@ ALTER TABLE `generos`
   MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `migrations`
---
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `musicas`
 --
 ALTER TABLE `musicas`
@@ -247,7 +224,7 @@ ALTER TABLE `musicos`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

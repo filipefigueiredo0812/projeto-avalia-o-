@@ -35,6 +35,6 @@ class Musica extends Model
     }
 
     public function users(){
-        return $this->belongsTo('App\Models\Users','id_user');
+        return $this->belongsTo('App\Models\User','id_user');
     }
 }

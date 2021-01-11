@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', 'App\Http\Controllers\MusicasController@home')
+    ->name('musicas.index');
+
 Route::get('/albuns', 'App\Http\Controllers\AlbunsController@index')
     ->name('albuns.index');
 
@@ -87,3 +90,19 @@ Route::get('/musicas/{id}/delete','App\Http\Controllers\MusicasController@delete
     ->name('musicas.delete')->middleware('auth');
 Route::delete('/musicas','App\Http\Controllers\MusicasController@destroy')
     ->name('musicas.destroy')->middleware('auth');
+
+
+    Route::get('/musicos/create','App\Http\Controllers\MusicosController@create')
+    ->name('musicos.create')->middleware('auth');
+Route::post('/musicos/store','App\Http\Controllers\MusicosController@store')
+    ->name('musicos.store')->middleware('auth');
+Route::get('/musicos/{id}/edit','App\Http\Controllers\MusicosController@edit')
+    ->name('musicos.edit')->middleware('auth');
+Route::patch('/musicos/{id}','App\Http\Controllers\MusicosController@update')
+    ->name('musicos.update')->middleware('auth');
+
+
+Route::get('/musicos/{id}/delete','App\Http\Controllers\MusicosController@delete')
+    ->name('musicos.delete')->middleware('auth');
+Route::delete('/musicos','App\Http\Controllers\MusicosController@destroy')
+    ->name('musicos.destroy')->middleware('auth');

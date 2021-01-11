@@ -57,9 +57,9 @@ Género:
 
 @if(auth()->check())
 @if(auth()->user()->id==$musica->id_user || Gate::allows('admin') || $musica->id_user==NULL)
-<a href="{{route('musicas.edit', ['id'=>$musica->id_musicas])}}" class="btn btn-info" role="button">Editar Musica</a>
+<a href="{{route('musicas.edit', ['id'=>$musica->id_musica])}}" class="btn btn-info" role="button">Editar rerwerewrMusica</a>
 
-<a href="{{route('musicas.delete', ['id'=>$musica->id_musicas])}}" class="btn btn-info" role="button">Eliminar Musica</a>
+<a href="{{route('musicas.delete', ['id'=>$musica->id_musica])}}" class="btn btn-info" role="button">Eliminar Musica</a>
 @endif
 @endif
 
