@@ -66,7 +66,7 @@ class MusicasController extends Controller
             }
         else{
             return redirect()->route('musicas.index')
-            ->with('mensagem','Não tem acesso para aceder à área pretendida.');
+            ->with('msg','Não tem acesso para aceder à área pretendida.');
         
         
         }
@@ -93,7 +93,7 @@ class MusicasController extends Controller
         }
         else{
             return redirect()->route('musicas.index')
-        ->with('mensagem','Não tem acesso para aceder à área pretendida.');
+        ->with('msg','Não tem acesso para aceder à área pretendida.');
         }
     }
 
@@ -137,7 +137,7 @@ class MusicasController extends Controller
         }
         else{
             return redirect()->route('musicas.index')
-            ->with('mensagem','Não tem acesso para aceder à área pretendida.');
+            ->with('msg','Não tem acesso para aceder à área pretendida.');
         }
     }
 
@@ -166,7 +166,7 @@ class MusicasController extends Controller
     }
         else{
             return redirect()->route('musicas.index')
-        ->with('mensagem','Não tem acesso para aceder à área pretendida.');
+        ->with('msg','Não tem acesso para aceder à área pretendida.');
         }
     }
 
@@ -204,7 +204,7 @@ class MusicasController extends Controller
         }
         else{
         return redirect()->route('musicas.index')
-        ->with('mensagem','Não tem acesso para aceder à área pretendida.');
+        ->with('msg','Não tem acesso para aceder à área pretendida.');
         }
     }
 
@@ -224,7 +224,7 @@ class MusicasController extends Controller
         }
         else{
             return redirect()->route('musicas.index')
-        ->with('mensagem','Não tem acesso para aceder à área pretendida.');
+        ->with('msg','Não tem acesso para aceder à área pretendida.');
         }
-        }
+    }
 }

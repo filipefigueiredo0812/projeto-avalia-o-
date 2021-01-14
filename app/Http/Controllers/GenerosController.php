@@ -33,7 +33,7 @@ class GenerosController extends Controller
         }
         else{
             return redirect()->route('generos.index')
-        ->with('mensagem','Não tem acesso para aceder à área pretendida.');
+        ->with('msg','Não tem acesso para aceder à área pretendida.');
         }
     }
     
@@ -48,12 +48,12 @@ class GenerosController extends Controller
         
         
         return redirect()->route('generos.show', [
-            'idg'=>$genero->id_genero
+            'id'=>$genero->id_genero
         ]);
         }
         else{
             return redirect()->route('generos.index')
-        ->with('mensagem','Não tem acesso para aceder à área pretendida.');
+        ->with('msg','Não tem acesso para aceder à área pretendida.');
         }
     }
     
@@ -75,7 +75,7 @@ class GenerosController extends Controller
         }
         else{
             return redirect()->route('generos.index')
-        ->with('mensagem','Não tem acesso para aceder à área pretendida.');
+        ->with('msg','Não tem acesso para aceder à área pretendida.');
         }
     }
     
@@ -98,13 +98,13 @@ class GenerosController extends Controller
           ]);
         $genero->update($atualizarGenero);
         return redirect()->route('generos.show', [
-            'idg'=>$genero->id_genero
+            'id'=>$genero->id_genero
         ]);
             }
         }
         else{
             return redirect()->route('generos.index')
-        ->with('mensagem','Não tem acesso para aceder à área pretendida.');
+        ->with('msg','Não tem acesso para aceder à área pretendida.');
         }
     }
     
@@ -127,7 +127,7 @@ class GenerosController extends Controller
         }
         else{
             return redirect()->route('generos.index')
-        ->with('mensagem','Não tem acesso para aceder à área pretendida.');
+        ->with('msg','Não tem acesso para aceder à área pretendida.');
         }
         }
         
@@ -151,7 +151,7 @@ class GenerosController extends Controller
 
         else{
             return redirect()->route('generos.index')
-        ->with('mensagem','Não tem acesso para aceder à área pretendida.');
+        ->with('msg','Não tem acesso para aceder à área pretendida.');
         }
         }
     
