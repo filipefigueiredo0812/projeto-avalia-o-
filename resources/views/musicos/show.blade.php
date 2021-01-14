@@ -10,8 +10,10 @@ ID: {{$musico->id_musico}}<br>
 Nome: {{$musico->nome}}<br>
 Nacionalidade: {{$musico->nacionalidade}}<br>
 Data de Nascimento: {{$musico->data_nascimento}}<br>
-
-Fotografia: {{$musico->fotografia}}<br>
+Fotografia:
+@if(isset($musico->fotografia))
+<img src="{{asset('fotos/musicos/'.$musico->fotografia)}}"><br>
+@endif
 
 <br>
 

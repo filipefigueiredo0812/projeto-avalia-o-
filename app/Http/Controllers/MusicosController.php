@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Musico;
 use App\Models\Musica;
 use App\Models\Album;
@@ -23,7 +24,7 @@ class MusicosController extends Controller
         
         $idMusico = $r->id;
         
-        $musico = Musico::where('id_musico',$idMusico)->with(['albuns', 'musicos'])->first();
+        $musico = Musico::where('id_musico',$idMusico)->with(['albuns', 'musicas'])->first();
         
         return view ('musicos.show', [
             'musico'=>$musico
@@ -70,10 +71,16 @@ class MusicosController extends Controller
                 'data_nascimento'=>['date', 'nullable'],
                 'fotografia'=>['image','nullable','max:2000']
             ]);
-            if(Auth::check()){
-                $userAtual=Auth::user()->id;
-                $novoMusico['id_user']=$userAtual;
+            if($r->hasFile('fotografia')){
+                $nomeImagem = $r->file('fotografia')->getClientOriginalName();
+
+                $nomeImagem = time(). "_" .$nomeImagem;
+                $guardarImagem = $r->file('fotografia')->storeAs('fotos\musicos', $nomeImagem);
+
+                $novoMusico['fotografia']=$nomeImagem;
             }
+
+
         $musico=Musico::create($novoMusico);
         
         return redirect()->route('musicos.show', [
@@ -91,37 +98,16 @@ class MusicosController extends Controller
     public function edit(Request $r){
         
         $idMusico = $r->id;
-        $musico=Musico::where('id_musico',$idMusico)->with(['musicos','generos','albuns'])->first();
+        $musico=Musico::where('id_musico',$idMusico)->with(['musicas', 'albuns'])->first();
         if(Gate::allows('admin')||Gate::allows('atualizar-musico',$musico)){
-            $musicos=Musico::all();
-            $generos=Genero::all();
+            $musicas=Musica::all();
             $albuns=Album::all();
-            /*
-            $musicosMusico = [];
-            $generosMusico = [];
-            $albunsMusico = [];
-            dd($musicos);
-            foreach($musico->musicos as $musico){
-                $musicosMusico[] = $musico->id_musico;
-            }
-            foreach($musico->generos as $genero){
-                $generosMusico[] = $genero->id_genero;
-            }
-            foreach($musico->albuns as $album){
-                $albunsMusico[] = $album->id_album;
-            }
-            */
+        
             
             return view('musicos.edit',[
+                'musicas'=>$musicas,
                 'musico'=>$musico,
-                'generos'=>$generos,
-                'musicos'=>$musicos,
                 'albuns'=>$albuns
-                /*
-                'musicosMusico'=>$musicosMusico,
-                'albunsMusico'=>$albunsMusico,
-                'generosMusico'=>$generosMusico
-                */
             ]);
         }
         else{
@@ -133,17 +119,32 @@ class MusicosController extends Controller
     public function update(Request $r){
         $idMusico=$r->id;
         $musico=Musico::where('id_musico', $idMusico)->first();
+        $ImagemAntiga = $musico->fotografia;
         if(Gate::allows('admin')){
             if(is_null($musico)){
                 return redirect()->route('musicos.index')->with('msg', 'A música não existe');
             }
             else{
             $atualizarMusico = $r->validate ([
-                'titulo'=>['required', 'min:3', 'max:100'],
-                'id_musico'=>['numeric', 'nullable'],
-                'id_genero'=>['numeric', 'nullable'],
-                'id_album'=>['numeric', 'nullable']
+                'nome'=>['required', 'min:3', 'max:100'],
+                'nacionalidade'=>['nullable', 'min:3', 'max:30'],
+                'data_nascimento'=>['date', 'nullable'],
+                'fotografia'=>['image','nullable','max:2000']
             ]);
+            if($r->hasFile('fotografia')){
+
+
+                $nomeImagem = $r->file('fotografia')->getClientOriginalName();
+              
+                $nomeImagem = time(). '_' . $nomeImagem;
+                $guardarImagem = $r->file('fotografia')->storeAs('fotos\musicos', $nomeImagem);
+                
+                if(!is_null($ImagemAntiga)){
+                    Storage::Delete('fotos/musicos/'. $ImagemAntiga);
+                }
+    
+                $atualizarMusico['fotografia']= $nomeImagem;
+            }
         $musico->update($atualizarMusico);
           
         

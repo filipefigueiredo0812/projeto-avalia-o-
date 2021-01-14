@@ -4,7 +4,7 @@
     @endsection
     
 @section('conteudo')
-<form action="{{route('musicas.store')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('musicos.store')}}" method="post" enctype="multipart/form-data">
 @csrf
     
     Nome*: <input type="text" name="nome" value="{{old('nome')}}"><br>
@@ -16,7 +16,7 @@
     
     <br>
 
-    Nacionalidade*: <input type="text" name="nacionalidade" value="{{old('nacionalidade')}}"><br>
+    Nacionalidade: <input type="text" name="nacionalidade" value="{{old('nacionalidade')}}"><br>
     @if ($errors->has('nacionalidade'))
     <div class="alert alert-danger" role="alert">
     Nacionalidade inválida.<br><br>
@@ -25,7 +25,7 @@
     
     <br>
 
-    Data Nascimento*: <input type="date" name="data_nascimento" value="{{old('data_nascimento')}}"><br>
+    Data Nascimento: <input type="date" name="data_nascimento" value="{{old('data_nascimento')}}"><br>
     @if ($errors->has('data_nascimento'))
     <div class="alert alert-danger" role="alert">
     Data de Nascimento inválida.<br><br>
@@ -34,6 +34,12 @@
     
     <br>
     
+    Fotografia: <input type="file" name="fotografia" value="{{old('fotografia')}}"><br>
+    @if ($errors->has('fotografia'))
+    <div class="alert alert-danger" role="alert">
+    Imagem inválida.<br><br>
+    </div>
+    @endif
 
     <input type="submit" value="enviar">
     
