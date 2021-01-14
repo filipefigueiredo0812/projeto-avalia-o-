@@ -92,7 +92,7 @@ Route::delete('/musicas','App\Http\Controllers\MusicasController@destroy')
     ->name('musicas.destroy')->middleware('auth');
 
 
-    Route::get('/musicos/create','App\Http\Controllers\MusicosController@create')
+Route::get('/musicos/create','App\Http\Controllers\MusicosController@create')
     ->name('musicos.create')->middleware('auth');
 Route::post('/musicos/store','App\Http\Controllers\MusicosController@store')
     ->name('musicos.store')->middleware('auth');
@@ -106,3 +106,21 @@ Route::get('/musicos/{id}/delete','App\Http\Controllers\MusicosController@delete
     ->name('musicos.delete')->middleware('auth');
 Route::delete('/musicos','App\Http\Controllers\MusicosController@destroy')
     ->name('musicos.destroy')->middleware('auth');
+
+
+
+
+Route::get('/generos/create','App\Http\Controllers\GenerosController@create')
+    ->name('generos.create')->middleware('auth');
+Route::post('/generos/store','App\Http\Controllers\GenerosController@store')
+    ->name('generos.store')->middleware('auth');
+Route::get('/generos/{id}/edit','App\Http\Controllers\GenerosController@edit')
+    ->name('generos.edit')->middleware('auth');
+Route::patch('/generos/{id}','App\Http\Controllers\GenerosController@update')
+    ->name('generos.update')->middleware('auth');
+
+
+Route::get('/generos/{id}/delete','App\Http\Controllers\GenerosController@delete')
+    ->name('generos.delete')->middleware('auth');
+Route::delete('/generos','App\Http\Controllers\GenerosController@destroy')
+    ->name('generos.destroy')->middleware('auth');

@@ -8,6 +8,7 @@ Generos
 @section('conteudo')
 
 
+
 <ul>
 @foreach ($generos as $genero)
 

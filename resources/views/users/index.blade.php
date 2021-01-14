@@ -9,7 +9,7 @@
 
 @foreach($users as $user)
 <li>
-    <h6>{{$user->name}}  {{$user->email}}  {{$user->tipo_user}}<h6>
+    <h6>{{$user->name}}<br>  {{$user->email}} <br> {{$user->tipo_user}}<h6>
 </li>
 @endforeach
    <br> 

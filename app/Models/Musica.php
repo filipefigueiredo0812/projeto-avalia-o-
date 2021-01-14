@@ -18,7 +18,8 @@ class Musica extends Model
         'titulo',
         'id_musico',
         'id_genero',
-        'id_album'
+        'id_album',
+        'id_user'
     ];
 
 
