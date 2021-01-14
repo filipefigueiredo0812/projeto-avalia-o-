@@ -1,3 +1,4 @@
+
 @extends('layout')
 @section('header')
     <h1>Novo Género</h1>

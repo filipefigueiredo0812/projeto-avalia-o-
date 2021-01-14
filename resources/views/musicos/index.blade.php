@@ -33,6 +33,12 @@ Musicos
 
 
 {{$musicos->render()}}
+
+@if(auth()->check())
+@if(Gate::allows('admin'))
+<a href="{{route('musicos.create')}}" class="btn btn-info" role="button">Novo Músico</a>
+@endif
+@endif
 @endsection
 
 

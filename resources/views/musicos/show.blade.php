@@ -42,6 +42,12 @@ Músicas:<br>
 </div>
 @endif
 
+@if(auth()->check())
+@if(auth()->user()->id==$musico->id_user || Gate::allows('admin') || $musico->id_user==NULL)
+<a href="{{route('musicos.edit', ['id'=>$musico->id_musico])}}" class="btn btn-info" role="button">Editar Musico</a>
 
+<a href="{{route('musicos.delete', ['id'=>$musico->id_musico])}}" class="btn btn-info" role="button">Eliminar Musico</a>
+@endif
+@endif
 
 @endsection

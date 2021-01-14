@@ -124,3 +124,21 @@ Route::get('/generos/{id}/delete','App\Http\Controllers\GenerosController@delete
     ->name('generos.delete')->middleware('auth');
 Route::delete('/generos','App\Http\Controllers\GenerosController@destroy')
     ->name('generos.destroy')->middleware('auth');
+
+
+
+
+Route::get('/albuns/create','App\Http\Controllers\AlbunsController@create')
+    ->name('albuns.create')->middleware('auth');
+Route::post('/albuns/store','App\Http\Controllers\AlbunsController@store')
+    ->name('albuns.store')->middleware('auth');
+Route::get('/albuns/{id}/edit','App\Http\Controllers\AlbunsController@edit')
+    ->name('albuns.edit')->middleware('auth');
+Route::patch('/albuns/{id}','App\Http\Controllers\AlbunsController@update')
+    ->name('albuns.update')->middleware('auth');
+
+
+Route::get('/albuns/{id}/delete','App\Http\Controllers\AlbunsController@delete')
+    ->name('albuns.delete')->middleware('auth');
+Route::delete('/albuns','App\Http\Controllers\AlbunsController@destroy')
+    ->name('albuns.destroy')->middleware('auth');

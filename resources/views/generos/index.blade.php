@@ -22,6 +22,12 @@ Generos
 
 
 {{$generos->render()}}
+
+@if(auth()->check())
+@if(Gate::allows('admin'))
+<a href="{{route('generos.create')}}" class="btn btn-info" role="button">Novo Genero</a>
+@endif
+@endif
 @endsection
 
 

@@ -51,7 +51,13 @@ Músicas:<br>
 
 
 
+@if(auth()->check())
+@if(auth()->user()->id==$album->id_user || Gate::allows('admin') || $album->id_user==NULL)
+<a href="{{route('albuns.edit', ['id'=>$album->id_album])}}" class="btn btn-info" role="button">Editar Album</a>
 
+<a href="{{route('albuns.delete', ['id'=>$album->id_album])}}" class="btn btn-info" role="button">Eliminar Album</a>
+@endif
+@endif
 
 
 
