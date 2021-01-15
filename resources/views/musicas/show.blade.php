@@ -53,7 +53,7 @@ Género:
 </ul>
 Likes:{{$likes}}
 @if(Auth()->check())
-    @if($utilizador != null)
+    @if($utilizador!=null)
     <i class="fas fa-heart" style="color: red"></i>
     @else
     <a href="{{route('musicas.like',['id'=>$musica->id_musica])}}">
