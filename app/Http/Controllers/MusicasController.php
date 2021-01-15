@@ -11,6 +11,7 @@ use App\Models\Musico;
 use App\Models\Album;
 use App\Models\User;
 use App\Models\Genero;
+use App\Models\Like;
 
 class MusicasController extends Controller
 {
@@ -31,11 +32,18 @@ class MusicasController extends Controller
     
     public function show(Request $r){
         $idMusica = $r->id;
+        $utilizador = "";
+        $likes = Like::where('id_musica',$idMusica)->count();
         $musica = Musica::where('id_musica',$idMusica)->with(['generos', 'albuns', 'musicos'])->first();
         
-        
+        if(Auth::check()){
+            $idUser = Auth::user()->id;
+            $utilizador = Like::where('id_user','like',$idUser)->where('id_musica','like',$idMusica)->first();
+        }
         return view ('musicas.show', [
-            'musica'=>$musica
+            'musica'=>$musica,
+            'likes'=>$likes,
+            'utilizador'=>$utilizador
         ]);
     }
     
@@ -225,6 +233,26 @@ class MusicasController extends Controller
         else{
             return redirect()->route('musicas.index')
         ->with('msg','Não tem acesso para aceder à área pretendida.');
+        }
+    }
+
+    public function likes(Request $r){
+        $id = $r->id;
+        if(Auth()->check()){
+            $idUser = Auth::user()->id;
+            $like = Like::where('id_user','=',$idUser)->where('id_musica','=',$id)->first();
+            if($like == null){
+                $novoLike['id_user']=$idUser;
+                $novoLike['id_musica']=$id;
+                $like = Like::create($novoLike);
+                return redirect()->route('musicas.show',['id'=>$id]);
+            }
+            else{
+                return redirect()->route('musicas.show',['id'=>$id]);
+            }
+        }
+        else{
+            return redirect()->route('musicas.show',['id'=>$id]->with('msg','Precisa estar numa conta para puder fazer esta acão!'));
         }
     }
 }

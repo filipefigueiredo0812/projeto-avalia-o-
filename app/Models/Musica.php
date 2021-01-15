@@ -38,4 +38,8 @@ class Musica extends Model
     public function users(){
         return $this->belongsTo('App\Models\User','id_user');
     }
+
+    public function likes(){
+        return $this->belongsTo('App\Models\Like','id_musica');
+    }
 }

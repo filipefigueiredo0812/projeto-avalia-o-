@@ -51,20 +51,19 @@ Género:
         </div>
     @endif
 </ul>
-
-
-<br>
-
-Nº de Likes: {{$likes}}
+Likes:{{$likes}}
 @if(Auth()->check())
-    @if($user != null)
-    <i class="fas fa-heart" style="color: blue"></i>
+    @if($utilizador != null)
+    <i class="fas fa-heart" style="color: red"></i>
     @else
     <a href="{{route('musicas.like',['id'=>$musica->id_musica])}}">
     <i class="fas fa-heart"></i>
     </a>
 @endif
 @endif
+<br>
+<br>
+<br>
 @if(auth()->check())
 @if(auth()->user()->id==$musica->id_user || Gate::allows('admin') || $musica->id_user==NULL)
 <a href="{{route('musicas.edit', ['id'=>$musica->id_musica])}}" class="btn btn-info" role="button">Editar Musica</a>

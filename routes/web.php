@@ -109,7 +109,7 @@ Route::delete('/musicos','App\Http\Controllers\MusicosController@destroy')
 
 
     Route::get('/musicas/like/{id}','App\Http\Controllers\MusicasController@likes')
-    ->name('livro.like');
+    ->name('musicas.like');
 
 
 
