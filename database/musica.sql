@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 11-Jan-2021 às 18:27
+-- Generation Time: 15-Jan-2021 às 18:16
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -86,24 +86,25 @@ CREATE TABLE `musicas` (
   `id_genero` int(11) NOT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `id_album` int(11) NOT NULL
+  `id_album` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `musicas`
 --
 
-INSERT INTO `musicas` (`id_musica`, `titulo`, `id_musico`, `id_genero`, `updated_at`, `created_at`, `id_album`) VALUES
-(1, 'Sonhar Nesta Vida', 1, 1, NULL, NULL, 1),
-(2, 'Protagonista', 1, 1, NULL, NULL, 1),
-(3, 'Romarias', 2, 1, NULL, NULL, 2),
-(4, 'Castolo', 2, 1, NULL, NULL, 2),
-(5, 'Baby Be Mine', 3, 2, NULL, NULL, 3),
-(6, 'The Girl is Mine', 3, 2, NULL, NULL, 3),
-(7, 'A Steady Beginning', 4, 3, NULL, NULL, 4),
-(8, 'This Is What Happens', 4, 3, NULL, NULL, 4),
-(9, 'Nightmares', 4, 3, NULL, NULL, 5),
-(10, 'Blue Light', 4, 3, NULL, NULL, 5);
+INSERT INTO `musicas` (`id_musica`, `titulo`, `id_musico`, `id_genero`, `updated_at`, `created_at`, `id_album`, `id_user`) VALUES
+(1, 'Sonhar Nesta Vida', 1, 1, '2021-01-14 11:48:21', NULL, 1, 0),
+(2, 'Protagonista', 1, 1, NULL, NULL, 1, 0),
+(3, 'Romarias', 2, 1, '2021-01-15 17:08:01', NULL, 2, 0),
+(4, 'Castolo', 2, 1, '2021-01-15 17:08:01', NULL, 2, 0),
+(5, 'Baby Be Mine', 3, 2, '2021-01-15 17:08:39', NULL, 3, 0),
+(6, 'The Girl is Mine', 3, 2, NULL, NULL, 3, 0),
+(7, 'A Steady Beginning', 4, 3, NULL, NULL, 4, 0),
+(8, 'This Is What Happens', 4, 3, NULL, NULL, 4, 0),
+(9, 'Nightmares', 4, 3, NULL, NULL, 5, 0),
+(10, 'Blue Light', 4, 3, NULL, NULL, 5, 0);
 
 -- --------------------------------------------------------
 
@@ -126,10 +127,10 @@ CREATE TABLE `musicos` (
 --
 
 INSERT INTO `musicos` (`id_musico`, `nome`, `nacionalidade`, `data_nascimento`, `fotografia`, `updated_at`, `created_at`) VALUES
-(1, 'Dillaz', 'Português', '1993-08-15 00:00:00', 'Foto1', NULL, NULL),
-(2, 'Chico da Tina', 'Português', '1996-06-11 00:00:00', 'Foto3', NULL, NULL),
-(3, 'Michael Jackson', 'Norte-Americano', '1958-08-29 00:00:00', 'Foto2', NULL, NULL),
-(4, 'Peachy!', 'Norte-Americano', '2001-02-22 00:00:00', 'Foto4', NULL, NULL);
+(1, 'Dillaz', 'Português', NULL, '1610634020_unnamed.jpg', '2021-01-14 14:20:20', NULL),
+(2, 'Chico da Tina', 'Português', NULL, '1610634109_maxresdefault.jpg', '2021-01-14 14:21:49', NULL),
+(3, 'Michael Jackson', 'Norte-Americano', NULL, '1610634150_michael-jackson-ok-1550763542.jpg', '2021-01-14 14:22:30', NULL),
+(4, 'Peachy!', 'Norte-Americano', NULL, '1610634191_avatars-pm7EjfSyX6gANyAV-ypvl3g-t240x240.jpg', '2021-01-14 14:23:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -155,8 +156,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `tipo_user`, `remember_token`, `created_at`, `updated_at`, `id_user`) VALUES
-(1, 'Filipe', 'filipe1234@gmail.com', NULL, '$2y$10$mCN.2EYZJi97YalH1RZ/C.lMrkuRzEXdTWjsQQgInrJwkjEOOApd2', 'admin', NULL, '2021-01-08 17:10:03', '2021-01-08 17:10:03', NULL),
-(2, 'Alberto', 'alberto1234@gmail.com', NULL, '$2y$10$6CLarNQmKt0LfRb.5qAgweJarV6WrAgqbsu0305C4ro8PfhufetCa', 'normal', NULL, '2021-01-11 17:27:37', '2021-01-11 17:27:37', NULL);
+(1, 'Filipe', 'filipe1234@gmail.com', NULL, '$2y$10$mCN.2EYZJi97YalH1RZ/C.lMrkuRzEXdTWjsQQgInrJwkjEOOApd2', 'admin', NULL, '2021-01-08 17:10:03', '2021-01-08 17:10:03', 1),
+(2, 'Alberto', 'alberto1234@gmail.com', NULL, '$2y$10$6CLarNQmKt0LfRb.5qAgweJarV6WrAgqbsu0305C4ro8PfhufetCa', 'normal', NULL, '2021-01-11 17:27:37', '2021-01-11 17:27:37', 2);
 
 --
 -- Indexes for dumped tables
@@ -200,25 +201,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `albuns`
 --
 ALTER TABLE `albuns`
-  MODIFY `id_album` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_album` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `generos`
 --
 ALTER TABLE `generos`
-  MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `musicas`
 --
 ALTER TABLE `musicas`
-  MODIFY `id_musica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_musica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `musicos`
 --
 ALTER TABLE `musicos`
-  MODIFY `id_musico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_musico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`

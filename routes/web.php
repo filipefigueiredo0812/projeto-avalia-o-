@@ -108,6 +108,9 @@ Route::delete('/musicos','App\Http\Controllers\MusicosController@destroy')
     ->name('musicos.destroy')->middleware('auth');
 
 
+    Route::get('/musicas/like/{id}','App\Http\Controllers\MusicasController@likes')
+    ->name('livro.like');
+
 
 
 Route::get('/generos/create','App\Http\Controllers\GenerosController@create')
@@ -142,3 +145,8 @@ Route::get('/albuns/{id}/delete','App\Http\Controllers\AlbunsController@delete')
     ->name('albuns.delete')->middleware('auth');
 Route::delete('/albuns','App\Http\Controllers\AlbunsController@destroy')
     ->name('albuns.destroy')->middleware('auth');
+
+
+
+
+

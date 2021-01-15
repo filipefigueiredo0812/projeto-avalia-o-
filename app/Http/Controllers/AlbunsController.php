@@ -68,11 +68,19 @@ class AlbunsController extends Controller
                 'data_lancamento'=>['date', 'nullable'],
                 'observacoes'=>['nullable', 'min:3', 'max:255']
             ]);
-            
-
-
         $album=Album::create($novoAlbum);
-        
+        $idAlbum=$album->id_album;
+        $idMusicas=$r->id_musica;
+        foreach($idMusicas as $idmusica){
+            $musica=Musica::where('id_musica',$idmusica)->first();  
+            $musica->id_album=$idAlbum;
+            $atualizarMusica = $r->validate ([
+                'id_album'=>['numeric', 'nullable']
+            ]);
+            $musica->update($atualizarMusica);
+        }
+
+
         return redirect()->route('albuns.show', [
             'id'=>$album->id_album
         ]);
@@ -120,17 +128,22 @@ class AlbunsController extends Controller
             }
             else{
             $atualizarAlbum = $r->validate ([
-                    'titulo'=>['required', 'min:3', 'max:100'],
-                    'id_genero'=>['numeric', 'nullable'],
-                    'id_musico'=>['numeric', 'nullable'],
-                    'data_lancamento'=>['date', 'nullable'],
-                    'observacoes'=>['nullable', 'min:3', 'max:255']
-                ]);
-        $musicas=$r->id_musica;
-                
+                'titulo'=>['required', 'min:3', 'max:100'],
+                'id_genero'=>['numeric', 'nullable'],
+                'id_musico'=>['numeric', 'nullable'],
+                'data_lancamento'=>['date', 'nullable'],
+                'observacoes'=>['nullable', 'min:3', 'max:255']
+            ]);
+            $idMusicas=$r->id_musica;
+        foreach($idMusicas as $idmusica){
+            $musica=Musica::where('id_musica',$idmusica)->first();  
+            $musica->id_album=$idAlbum;
+            $atualizarMusica = $r->validate ([
+                'id_album'=>['numeric', 'nullable']
+            ]);
+            $musica->update($atualizarMusica);
+        }
         $album->update($atualizarAlbum);
-          
-        
         
         return redirect()->route('albuns.show', [
             'id'=>$album->id_album
