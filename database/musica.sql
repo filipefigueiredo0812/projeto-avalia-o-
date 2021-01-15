@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 15-Jan-2021 às 18:16
--- Versão do servidor: 10.1.38-MariaDB
--- versão do PHP: 7.3.2
+-- Tempo de geração: 15-Jan-2021 às 21:29
+-- Versão do servidor: 10.4.17-MariaDB
+-- versão do PHP: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `musica`
+-- Banco de dados: `musica`
 --
 
 -- --------------------------------------------------------
@@ -72,6 +71,25 @@ INSERT INTO `generos` (`id_genero`, `designacao`, `observacoes`, `created_at`, `
 (1, 'Rap', NULL, NULL, NULL),
 (2, 'Pop', NULL, NULL, NULL),
 (3, 'Lo-Fi', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `likes`
+--
+
+CREATE TABLE `likes` (
+  `id_user` int(11) NOT NULL,
+  `id_musica` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `likes`
+--
+
+INSERT INTO `likes` (`id_user`, `id_musica`) VALUES
+(1, 1),
+(1, 3);
 
 -- --------------------------------------------------------
 
@@ -160,69 +178,69 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `ti
 (2, 'Alberto', 'alberto1234@gmail.com', NULL, '$2y$10$6CLarNQmKt0LfRb.5qAgweJarV6WrAgqbsu0305C4ro8PfhufetCa', 'normal', NULL, '2021-01-11 17:27:37', '2021-01-11 17:27:37', 2);
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `albuns`
+-- Índices para tabela `albuns`
 --
 ALTER TABLE `albuns`
   ADD PRIMARY KEY (`id_album`);
 
 --
--- Indexes for table `generos`
+-- Índices para tabela `generos`
 --
 ALTER TABLE `generos`
   ADD PRIMARY KEY (`id_genero`);
 
 --
--- Indexes for table `musicas`
+-- Índices para tabela `musicas`
 --
 ALTER TABLE `musicas`
   ADD PRIMARY KEY (`id_musica`);
 
 --
--- Indexes for table `musicos`
+-- Índices para tabela `musicos`
 --
 ALTER TABLE `musicos`
   ADD PRIMARY KEY (`id_musico`);
 
 --
--- Indexes for table `users`
+-- Índices para tabela `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `albuns`
+-- AUTO_INCREMENT de tabela `albuns`
 --
 ALTER TABLE `albuns`
   MODIFY `id_album` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `generos`
+-- AUTO_INCREMENT de tabela `generos`
 --
 ALTER TABLE `generos`
   MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `musicas`
+-- AUTO_INCREMENT de tabela `musicas`
 --
 ALTER TABLE `musicas`
   MODIFY `id_musica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `musicos`
+-- AUTO_INCREMENT de tabela `musicos`
 --
 ALTER TABLE `musicos`
   MODIFY `id_musico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
