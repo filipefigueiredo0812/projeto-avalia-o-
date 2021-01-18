@@ -92,6 +92,12 @@ Route::delete('/musicas','App\Http\Controllers\MusicasController@destroy')
     ->name('musicas.destroy')->middleware('auth');
 
 
+Route::get('/musicas/like/{id}','App\Http\Controllers\MusicasController@likes')
+    ->name('musicas.like');
+
+
+
+    
 Route::get('/musicos/create','App\Http\Controllers\MusicosController@create')
     ->name('musicos.create')->middleware('auth');
 Route::post('/musicos/store','App\Http\Controllers\MusicosController@store')
@@ -108,8 +114,6 @@ Route::delete('/musicos','App\Http\Controllers\MusicosController@destroy')
     ->name('musicos.destroy')->middleware('auth');
 
 
-    Route::get('/musicas/like/{id}','App\Http\Controllers\MusicasController@likes')
-    ->name('musicas.like');
 
 
 

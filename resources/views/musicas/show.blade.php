@@ -65,7 +65,7 @@ Likes:{{$likes}}
 <br>
 <br>
 @if(auth()->check())
-@if(auth()->user()->id==$musica->id_user || Gate::allows('admin') || $musica->id_user==NULL)
+@if(Gate::allows('admin'))
 <a href="{{route('musicas.edit', ['id'=>$musica->id_musica])}}" class="btn btn-info" role="button">Editar Musica</a>
 
 <a href="{{route('musicas.delete', ['id'=>$musica->id_musica])}}" class="btn btn-info" role="button">Eliminar Musica</a>

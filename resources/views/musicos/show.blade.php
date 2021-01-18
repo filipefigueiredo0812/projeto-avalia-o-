@@ -45,7 +45,7 @@ Músicas:<br>
 @endif
 
 @if(auth()->check())
-@if(auth()->user()->id==$musico->id_user || Gate::allows('admin') || $musico->id_user==NULL)
+@if(Gate::allows('admin'))
 <a href="{{route('musicos.edit', ['id'=>$musico->id_musico])}}" class="btn btn-info" role="button">Editar Musico</a>
 
 <a href="{{route('musicos.delete', ['id'=>$musico->id_musico])}}" class="btn btn-info" role="button">Eliminar Musico</a>

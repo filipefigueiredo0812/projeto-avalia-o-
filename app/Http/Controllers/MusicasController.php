@@ -115,32 +115,13 @@ class MusicasController extends Controller
             $musicos=Musico::all();
             $generos=Genero::all();
             $albuns=Album::all();
-            /*
-            $musicosMusica = [];
-            $generosMusica = [];
-            $albunsMusica = [];
-            dd($musicos);
-            foreach($musica->musicos as $musico){
-                $musicosMusica[] = $musico->id_musico;
-            }
-            foreach($musica->generos as $genero){
-                $generosMusica[] = $genero->id_genero;
-            }
-            foreach($musica->albuns as $album){
-                $albunsMusica[] = $album->id_album;
-            }
-            */
-            
+
+
             return view('musicas.edit',[
                 'musica'=>$musica,
                 'generos'=>$generos,
                 'musicos'=>$musicos,
                 'albuns'=>$albuns
-                /*
-                'musicosMusica'=>$musicosMusica,
-                'albunsMusica'=>$albunsMusica,
-                'generosMusica'=>$generosMusica
-                */
             ]);
         }
         else{
@@ -164,8 +145,6 @@ class MusicasController extends Controller
                 'id_album'=>['numeric', 'nullable']
             ]);
         $musica->update($atualizarMusica);
-          
-        
         
         return redirect()->route('musicas.show', [
             'id'=>$musica->id_musica
